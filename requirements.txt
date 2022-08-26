@@ -1,5 +1,6 @@
 django
-numpy
+numpy==1.21.4
+numba==0.53.0
 librosa
 sklearn
 tensorflow
