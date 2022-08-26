@@ -15,6 +15,10 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+    
+    if sys.platform == "linux" or sys.platform == "linux2":
+        os.system('[ "" != "$(which apt 2>/dev/null)" ] && apt-get install -y libsndfile1-dev')
+
     execute_from_command_line(sys.argv)
 
 
