@@ -9,6 +9,10 @@ import librosa
 from sklearn.preprocessing import LabelEncoder
 from tensorflow import keras
 
+# imports for dummy data
+from datetime import date, datetime
+from time import strftime
+import random
 
 def initialize():
     global model, le
@@ -54,7 +58,44 @@ def home(request):
             file = fs.save(request_file.name, request_file)
             fileurl = fs.url(file)
             prediction = predict('.' + fileurl)
-            os.remove('.' + fileurl)
-        return JsonResponse({
-            'result': prediction
-        })
+            # os.remove('.' + fileurl)
+
+            # dummy data starts here
+            
+            now = datetime.now()
+            hour = int(now.strftime("%H"))
+
+            
+            if (hour < 12):
+              suggestion = 'Give Him some Milk in Morning'
+            elif (hour < 17):
+              suggestion = 'GGive Him some Milk in Afternoon'
+            elif (hour < 20):
+              suggestion = 'Give Him some Milk in Evening'
+            else:
+              suggestion = 'Give Him some Milk in Night'
+
+            emotions = {
+                'happy': random.randint(0, 50),
+                'angry': random.randint(0, 50),
+            }
+            emotions['sad'] = 50 - emotions['happy']
+            emotions['fearful'] = 50 - emotions['angry']
+
+            maxEmotion = max(emotions, key = lambda x: emotions[x])
+
+            if (prediction == 'dog_bark'):
+                return JsonResponse({
+                    'message': 'Dog bark detected ✅',
+                    'result': 'Your dog is ' + maxEmotion,
+                    'suggestion': suggestion,
+                    'emotions': emotions,
+                })
+            else:
+                return JsonResponse({
+                    'message': 'Sorry, we didn\'t detected a dog bark'
+                })
+        else:
+            return JsonResponse({
+                'message': 'Please upload a wav file to analyze'
+            })
