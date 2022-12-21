@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "mypetslife",
+      "cwd": "./",
+      "args": "runserver 0.0.0.0:8080",
+      "script": "manage.py",
+      "exec_mode": "fork",
+      "exec_interpreter": "python"
+    }
+  ]
+}
