@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "mypetslife",
+      "name": "ml-api",
       "cwd": "./",
       "args": "runserver 0.0.0.0:8080",
       "script": "manage.py",
