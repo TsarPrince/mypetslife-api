@@ -3,7 +3,7 @@
     {
       "name": "ml-api",
       "cwd": "./",
-      "args": "runserver 0.0.0.0:8080",
+      "args": "runserver 0.0.0.0:8765",
       "script": "manage.py",
       "exec_mode": "fork",
       "exec_interpreter": "python"
