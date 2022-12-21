@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-c$9v8qnzei$l_t)#6$mlqg07pz1vfbb$8hfo@cbm&bex1276v2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Allowing mypetslife-dev EC2 instance public ip address
+ALLOWED_HOSTS = ['8.210.111.213']
 
 
 # Application definition
